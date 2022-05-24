@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
   login({Key? key}) : super(key: key);
+
+  @override
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
   final _uscntrl = TextEditingController();
+
   final _pscntrl = TextEditingController();
+  bool _data = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +45,25 @@ class login extends StatelessWidget {
                 border: OutlineInputBorder(), hintText: "password"),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(2),
-          child: ElevatedButton.icon(
-              onPressed: () {
-                goto();
-              },
-              icon: Icon(Icons.check),
-              label: Text("login")),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Visibility(
+                visible: _data,
+                child: Padding(
+                  padding: const EdgeInsets.all(9.0),
+                  child: Text("error"),
+                )),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                  onPressed: () {
+                    goto();
+                  },
+                  icon: Icon(Icons.check),
+                  label: Text("login")),
+            )
+          ],
         )
       ],
     )));
@@ -53,11 +72,12 @@ class login extends StatelessWidget {
   void goto() {
     final _username = _uscntrl.text;
     final _password = _pscntrl.text;
-    if(_username==_password){
-
-    }
-    else{
-      
+    if (_username == _password) {
+     
+    } else {
+       setState(() {
+         _data = true;
+       });
     }
   }
 }
