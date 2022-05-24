@@ -41,7 +41,7 @@ class login extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           child: ElevatedButton.icon(
               onPressed: () {
-                goto();
+                goto(context);
               },
               icon: Icon(Icons.check),
               label: Text("login")),
@@ -50,13 +50,28 @@ class login extends StatelessWidget {
     )));
   }
 
-  void goto() {
+  void goto(BuildContext ctx) {
     final _username = _uscntrl.text;
     final _password = _pscntrl.text;
     if(_username==_password){
 
     }
     else{
+     showDialog(
+          context: ctx,
+          builder: (ctx1) {
+            return AlertDialog(
+              title: Text("error"),
+              content: Text("invalid password and email"),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(ctx1).pop();
+                    },
+                    child: Text("close"))
+              ],
+            );
+          });
       
     }
   }
