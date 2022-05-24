@@ -41,7 +41,7 @@ class login extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           child: ElevatedButton.icon(
               onPressed: () {
-                goto();
+                goto(context);
               },
               icon: Icon(Icons.check),
               label: Text("login")),
@@ -50,14 +50,16 @@ class login extends StatelessWidget {
     )));
   }
 
-  void goto() {
+  void goto(BuildContext ctx) {
     final _username = _uscntrl.text;
     final _password = _pscntrl.text;
-    if(_username==_password){
-
-    }
-    else{
-      
+    if (_username == _password) {
+      //go home
+    } else {
+      //snackbar need build context
+      ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(behavior: SnackBarBehavior.floating,backgroundColor: Colors.red,margin: EdgeInsets.all(2),
+        content: Text('invalid user name and password'),
+      ));
     }
   }
 }
