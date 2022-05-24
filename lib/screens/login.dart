@@ -22,13 +22,14 @@ class login extends StatelessWidget {
         )
       ,Padding(
         padding: const EdgeInsets.all(8.0),
-        child: TextFormField(  decoration: InputDecoration( border: OutlineInputBorder(),hintText: "password"),),
-      ),
-      Padding(
-        padding: const EdgeInsets.all(10),
-        child: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.check), label: Text("login")),
+        child: TextFormField(obscureText: true, decoration: InputDecoration( border: OutlineInputBorder(),hintText: "password"),),
+      ),Padding(
+      padding: const EdgeInsets.all(2),
+      child: ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.check), label: Text("login")),
       )
+     
    ],
     )));
   }
+  
 }
