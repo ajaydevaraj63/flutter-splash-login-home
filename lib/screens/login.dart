@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_splash/screens/homescreen.dart';
+import 'package:flutter_application_splash/screens/splash.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class login extends StatefulWidget {
   login({Key? key}) : super(key: key);
@@ -91,10 +93,12 @@ class _loginState extends State<login> {
     )));
   }
 
-  void goto(BuildContext ctx1) {
+  Future<void> goto(BuildContext ctx1) async {
     final _username = _uscntrl.text;
     final _password = _pscntrl.text;
     if (_username == _password) {
+      final _shrdprfs = await SharedPreferences.getInstance();
+      _shrdprfs.setBool(SAVE_KEY_NAME, true);
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((ctx) {
         return homescreen();
       })));
