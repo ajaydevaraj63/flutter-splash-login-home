@@ -95,7 +95,7 @@ class _loginState extends State<login> {
     final _username = _uscntrl.text;
     final _password = _pscntrl.text;
     if (_username == _password) {
-      Navigator.of(context).push(MaterialPageRoute(builder: ((ctx) {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: ((ctx) {
         return homescreen();
       })));
     } else {
