@@ -33,7 +33,7 @@ class _splashState extends State<splash> {
 
   void goto() {
     Timer(Duration(seconds: 2), () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) {
         return login();
       }));
     });
